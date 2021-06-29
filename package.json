@@ -1,0 +1,88 @@
+{
+  "name": "@typeofweb/utils",
+  "version": "0.0.0",
+  "type": "module",
+  "exports": {
+    "require": "./dist/index.cjs",
+    "import": "./dist/index.mjs",
+    "browser": "./dist/index.umd.js",
+    "default": "./dist/index.mjs"
+  },
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.mjs",
+  "browser": "dist/index.umd.js",
+  "unpkg": "dist/index.umd.js",
+  "types": "dist/index.d.ts",
+  "sideEffects": false,
+  "repository": "git://github.com/typeofweb/utils",
+  "bugs": {
+    "url": "https://github.com/typeofweb/utils/issues"
+  },
+  "homepage": "https://github.com/typeofweb/utils#readme",
+  "author": "Michał Miszczyszyn - Type of Web <hi@typeofweb.com> (https://typeofweb.com/)",
+  "license": "MIT",
+  "engines": {
+    "node": "^12.20.0 || ^14.13.1 || >=16.0.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "files": [
+    "package.json",
+    "dist",
+    "LICENSE"
+  ],
+  "keywords": [
+    "typescript",
+    "ts",
+    "utils",
+    "utilities"
+  ],
+  "devDependencies": {
+    "@rollup/plugin-commonjs": "19.0.0",
+    "@rollup/plugin-node-resolve": "13.0.0",
+    "@rollup/plugin-typescript": "8.2.1",
+    "@tsconfig/node12": "1.0.7",
+    "@tsconfig/node14": "1.0.0",
+    "@typeofweb/eslint-plugin": "0.1.10",
+    "@types/jest": "26.0.23",
+    "all-contributors-cli": "6.20.0",
+    "eslint": "7.28.0",
+    "husky": "6.0.0",
+    "jest": "27.0.4",
+    "lint-staged": "11.0.0",
+    "prettier": "2.3.1",
+    "qs": "6.10.1",
+    "rimraf": "3.0.2",
+    "rollup": "2.51.1",
+    "rollup-plugin-filesize": "9.1.1",
+    "rollup-plugin-license": "2.5.0",
+    "rollup-plugin-prettier": "2.1.0",
+    "rollup-plugin-terser": "7.0.2",
+    "ts-jest": "27.0.3",
+    "tsd": "https://github.com/typeofweb/tsd#pkg",
+    "tslib": "2.2.0",
+    "typescript": "4.3.2",
+    "weak-napi": "2.0.2"
+  },
+  "scripts": {
+    "prejest": "yarn build",
+    "jest": "NODE_OPTIONS=--experimental-vm-modules jest",
+    "test": "NODE_OPTIONS=--experimental-vm-modules yarn jest --detectOpenHandles --forceExit --passWithNoTests --coverage",
+    "test:dev": "NODE_OPTIONS=--experimental-vm-modules yarn jest --watch",
+    "build": "rimraf dist && rollup --config",
+    "build:watch": "rollup --config --watch",
+    "prepublishOnly": "yarn build",
+    "prepare": "husky install"
+  },
+  "lint-staged": {
+    "**/*.ts": [
+      "yarn test",
+      "yarn eslint --fix",
+      "yarn prettier --write"
+    ],
+    "**/*.{md,js,json}": [
+      "yarn prettier --write"
+    ]
+  }
+}

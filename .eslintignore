@@ -1,0 +1,6 @@
+jest-*.ts
+docs
+jest.config.js
+rollup.config.js
+dist
+coverage
