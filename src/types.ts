@@ -126,3 +126,10 @@ export type TupleOf<
  * @beta
  */
 export type If<T, Condition, Y, N = never> = T extends Condition ? Y : N;
+
+/**
+ * @beta
+ */
+export interface ErrorCtor<T extends Error> {
+  new (...args: ConstructorParameters<typeof Error>): T;
+}

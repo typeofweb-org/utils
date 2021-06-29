@@ -33,4 +33,7 @@ export type {
   Primitives,
   TupleOf,
   UndefinedToOptional,
+  ErrorCtor,
 } from './types';
+
+export { wait, isObject, invariant } from './functions';

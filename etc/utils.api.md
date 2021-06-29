@@ -30,7 +30,19 @@ export type DeepWritable<T> = {
 };
 
 // @beta (undocumented)
+export interface ErrorCtor<T extends Error> {
+    // (undocumented)
+    new (...args: ConstructorParameters<typeof Error>): T;
+}
+
+// @beta (undocumented)
 export type If<T, Condition, Y, N = never> = T extends Condition ? Y : N;
+
+// @beta (undocumented)
+export function invariant(predicate: unknown, message: string, ErrorConstructor?: ErrorCtor<Error>): asserts predicate;
+
+// @beta (undocumented)
+export const isObject: (val: unknown) => val is JsonObject;
 
 // @beta (undocumented)
 export type Json = JsonPrimitive | JsonObject | JsonArray;
@@ -95,6 +107,9 @@ export type TupleOf<T, Length extends number, Acc extends readonly unknown[] = r
 
 // @beta (undocumented)
 export type UndefinedToOptional<T> = T extends PlainObject ? {} extends T ? {} : T extends Date | readonly unknown[] ? T : Pretty<PickRequired<T> & PickOptional<T>> : T;
+
+// @beta (undocumented)
+export const wait: (ms: number) => Promise<unknown>;
 
 
 // (No @packageDocumentation comment for this package)
