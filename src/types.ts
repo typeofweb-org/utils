@@ -6,7 +6,8 @@ export type Primitives = string | number | boolean;
 /**
  * @beta
  */
-export type AnyObject = Record<keyof any, unknown>;
+export type AnyObject = Record<PropertyKey, unknown>;
+
 /**
  * @beta
  */
